@@ -1,0 +1,488 @@
+@import 'tailwindcss';
+
+:root {
+  --font-heading: var(--font-raleway);
+  --font-body: var(--font-geist);
+
+  /* Snowy Mountain Color Palette */
+  --snow-white: #FAFCFE;
+  --ice-blue: #E8F4F8;
+  --frost: #D4E7EE;
+  --glacier: #B8D8E8;
+  --mountain-gray: #8B9FB1;
+  --stone: #5D7285;
+  --deep-blue: #3B5B73;
+  --arctic-teal: #4A9FB8;
+  --sky-blue: #7DB8D4;
+  --summit: #2C4A5E;
+}
+
+@theme inline {
+  --color-zinc-900: #FAFCFE;
+  --color-pink-500: #4A9FB8;
+  --font-sans: var(--font-geist);
+  --font-family-heading: var(--font-raleway), sans-serif;
+}
+
+body {
+  font-family: var(--font-body), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: #0a0a0a;
+  color: #e4e4e7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-raleway), sans-serif;
+}
+
+.font-heading {
+  font-family: var(--font-raleway), sans-serif;
+}
+
+/* Selection styling */
+::selection {
+  background-color: rgba(74, 159, 184, 0.4);
+  color: #ffffff;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Smooth Easing Animation */
+.reveal-char {
+  opacity: 0;
+  display: inline-block;
+  animation: text-reveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes text-reveal {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) skewY(2deg);
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) skewY(0);
+    filter: blur(0);
+  }
+}
+
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Glass Utilities - Enhanced Glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(74, 159, 184, 0.5);
+  box-shadow: 0 8px 32px rgba(74, 159, 184, 0.15), 0 0 0 1px rgba(74, 159, 184, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(74, 159, 184, 0.4);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(74, 159, 184, 0.6);
+}
+
+/* Grid Background Pattern - Subtle Snow Texture */
+.bg-grid {
+  background-size: 40px 40px;
+  background-image:
+    linear-gradient(to right, rgba(184, 216, 232, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(184, 216, 232, 0.15) 1px, transparent 1px);
+}
+
+/* Markdown styles for chat messages */
+.markdown-content {
+  line-height: 1.6;
+}
+
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3,
+.markdown-content h4,
+.markdown-content h5,
+.markdown-content h6 {
+  color: #2C4A5E;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-family: var(--font-heading);
+}
+
+.markdown-content h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.markdown-content h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.markdown-content h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.markdown-content p {
+  margin-bottom: 1em;
+  color: #5D7285;
+}
+
+.markdown-content strong {
+  color: #3B5B73;
+  font-weight: 600;
+}
+
+.markdown-content em {
+  color: #5D7285;
+  font-style: italic;
+}
+
+.markdown-content a {
+  color: #4A9FB8;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.markdown-content a:hover {
+  color: #7DB8D4;
+}
+
+.markdown-content code {
+  background-color: rgba(232, 244, 248, 0.7);
+  color: #3B5B73;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.875em;
+  border: 1px solid rgba(184, 216, 232, 0.5);
+}
+
+.markdown-content pre {
+  background-color: rgba(232, 244, 248, 0.5);
+  border: 1px solid rgba(184, 216, 232, 0.5);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1em 0;
+}
+
+.markdown-content pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #3B5B73;
+  border: none;
+}
+
+.markdown-content ul,
+.markdown-content ol {
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+  color: #5D7285;
+}
+
+.markdown-content li {
+  margin-bottom: 0.5em;
+}
+
+.markdown-content ul {
+  list-style-type: disc;
+}
+
+.markdown-content ol {
+  list-style-type: decimal;
+}
+
+.markdown-content blockquote {
+  border-left: 4px solid #4A9FB8;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: #8B9FB1;
+  font-style: italic;
+}
+
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-content th,
+.markdown-content td {
+  border: 1px solid rgba(184, 216, 232, 0.5);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.markdown-content th {
+  background-color: rgba(232, 244, 248, 0.7);
+  color: #2C4A5E;
+  font-weight: 600;
+}
+
+.markdown-content td {
+  color: #5D7285;
+}
+
+.markdown-content hr {
+  border: none;
+  border-top: 1px solid rgba(184, 216, 232, 0.5);
+  margin: 2em 0;
+}
+
+/* Dark markdown styles for chat messages */
+.markdown-content-dark {
+  line-height: 1.6;
+}
+
+.markdown-content-dark h1,
+.markdown-content-dark h2,
+.markdown-content-dark h3,
+.markdown-content-dark h4,
+.markdown-content-dark h5,
+.markdown-content-dark h6 {
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-family: var(--font-heading);
+}
+
+.markdown-content-dark h1 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.markdown-content-dark h2 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+
+.markdown-content-dark h3 {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.markdown-content-dark p {
+  margin-bottom: 1em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.markdown-content-dark strong {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.markdown-content-dark em {
+  color: rgba(255, 255, 255, 0.8);
+  font-style: italic;
+}
+
+.markdown-content-dark a {
+  color: #4A9FB8;
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+
+.markdown-content-dark a:hover {
+  color: #7DB8D4;
+}
+
+.markdown-content-dark code {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+  font-size: 0.875em;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.markdown-content-dark pre {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 1em 0;
+}
+
+.markdown-content-dark pre code {
+  background-color: transparent;
+  padding: 0;
+  color: #ffffff;
+  border: none;
+}
+
+.markdown-content-dark ul,
+.markdown-content-dark ol {
+  margin-left: 1.5em;
+  margin-bottom: 1em;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.markdown-content-dark li {
+  margin-bottom: 0.5em;
+}
+
+.markdown-content-dark ul {
+  list-style-type: disc;
+}
+
+.markdown-content-dark ol {
+  list-style-type: decimal;
+}
+
+.markdown-content-dark blockquote {
+  border-left: 4px solid #4A9FB8;
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  color: rgba(255, 255, 255, 0.7);
+  font-style: italic;
+}
+
+.markdown-content-dark table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.markdown-content-dark th,
+.markdown-content-dark td {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.5rem;
+  text-align: left;
+}
+
+.markdown-content-dark th {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.markdown-content-dark td {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.markdown-content-dark hr {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  margin: 2em 0;
+}
+
+/* Wallet adapter button custom styling */
+.wallet-adapter-button {
+  background: rgba(14, 165, 233, 0.6) !important;
+  color: white !important;
+  border-radius: .5rem !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid #0284c7 !important;
+  padding: 0.5rem 1.5rem !important;
+  font-size: 1rem !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.wallet-adapter-button:not([disabled]):hover {
+  background: rgba(14, 165, 233, 0.8) !important;
+  transform: none !important;
+}
+
+.wallet-adapter-modal-wrapper {
+  background: #18181b !important;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.5) !important;
+  border: 1px solid rgba(82, 82, 91, 0.3) !important;
+  border-radius: 0.75rem !important;
+}
+
+.wallet-adapter-modal-title {
+  color: #e4e4e7 !important;
+  font-family: var(--font-heading) !important;
+}
+
+.wallet-adapter-modal-list {
+  background: transparent !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background: rgba(39, 39, 42, 0.4) !important;
+  border: 1px solid rgba(82, 82, 91, 0.5) !important;
+  color: #d4d4d8 !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button:not([disabled]):hover {
+  background: rgba(39, 39, 42, 0.6) !important;
+  border-color: rgba(236, 72, 153, 0.4) !important;
+  color: #e4e4e7 !important;
+  box-shadow: 0 0 15px rgba(236, 72, 153, 0.2) !important;
+  transform: none !important;
+}
+
+.wallet-adapter-modal-middle {
+  background: transparent !important;
+}
+
+.wallet-adapter-modal-button-close {
+  background: rgba(39, 39, 42, 0.4) !important;
+  border: 1px solid rgba(82, 82, 91, 0.3) !important;
+}
+
+.wallet-adapter-modal-button-close:hover {
+  background: rgba(39, 39, 42, 0.6) !important;
+  border-color: rgba(82, 82, 91, 0.5) !important;
+}
+
+.wallet-adapter-modal-button-close svg {
+  fill: #71717a !important;
+}
+
+.wallet-adapter-modal-button-close:hover svg {
+  fill: #a1a1aa !important;
+}
