@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ArrowRight } from 'lucide-react'
 
-export function PrimaryButton ({ href="", children, icon = true, className = '', onClick }) {
+export function PrimaryButton ({ href = '', children, icon = true, className = '', onClick }) {
   const baseClasses =
     'cursor-pointer group flex justify-center rounded-lg items-center gap-2 bg-sky-500/60 hover:bg-sky-500/80 border-2 border-sky-600 backdrop-blur px-8 py-4 font-semibold text-white transition-all duration-300'
 
@@ -36,7 +36,7 @@ export function PrimaryButton ({ href="", children, icon = true, className = '',
   )
 }
 
-export function SecondaryButton ({ href="", children, icon = false, className = '' }) {
+export function SecondaryButton ({ href = '', children, icon = false, className = '' }) {
   const baseClasses =
     'justify-center cursor-pointer group flex items-center rounded-lg gap-2 border-2 border-gray-500/30 bg-gray-900/50 px-8 py-4 font-semibold text-gray-200 transition-all duration-300 hover:border-primary hover:bg-gray-900/60'
 

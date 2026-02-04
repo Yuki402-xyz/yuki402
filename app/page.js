@@ -443,11 +443,11 @@ export default function Home () {
                   </div>
                 </div>
                 <PrimaryButton
-                href='https://pump.fun/coin/'
-                className='w-fit'
+                  href='https://pump.fun/coin/'
+                  className='w-fit'
                 >
                   Buy $YUKI on Pump.fun
-              </PrimaryButton>
+                </PrimaryButton>
               </div>
             </motion.div>
 

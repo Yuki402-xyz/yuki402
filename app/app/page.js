@@ -144,14 +144,14 @@ export default function AppPage () {
         <div className='container mx-auto px-6 h-20 flex items-center justify-between'>
           <div className='flex items-center gap-10'>
             <Link href='/' className='flex items-center gap-4 group'>
-            <Image
-              src='/logo.png'
-              alt='Yuki402 Logo'
-              width={60}
-              height={60}
-              className='transition-transform group-hover:scale-105 transition duration-500 ease-in-out'
-            />
-            <span className='text-white font-heading text-xl'>Yuki402</span>
+              <Image
+                src='/logo.png'
+                alt='Yuki402 Logo'
+                width={60}
+                height={60}
+                className='transition-transform group-hover:scale-105 transition duration-500 ease-in-out'
+              />
+              <span className='text-white font-heading text-xl'>Yuki402</span>
             </Link>
             <div className='hidden md:flex items-center gap-6'>
               <span className='text-white/50'>Agent</span>
@@ -218,7 +218,7 @@ export default function AppPage () {
           <div className='p-4 border-t border-white/10'>
             <div className='flex items-center gap-2 text-xs'>
               <div className='w-2 h-2 rounded-full bg-emerald-500' />
-              <span className='text-white/70'>{connected ? "Connected" : "Not connected"}</span>
+              <span className='text-white/70'>{connected ? 'Connected' : 'Not connected'}</span>
             </div>
             <div className='mt-2 text-xs text-white/60'>
               {connected ? publicKey.toString().slice(0, 4) + '...' + publicKey.toString().slice(-3) : 'Not connected'}
@@ -341,79 +341,81 @@ export default function AppPage () {
                       className='flex'
                     >
                       <div className='max-w-2xl glass-panel rounded-xl p-5 border-2 border-yellow-400/50 shadow-[0_8px_30px_-5px_rgba(250,204,21,0.3)]'>
-                        {!isProcessingPayment ? (
-                          <>
-                            <div className='flex items-start gap-3 mb-4'>
-                              <div className='w-10 h-10 rounded-lg bg-yellow-400/20 border border-yellow-400/30 flex items-center justify-center flex-shrink-0'>
-                                <svg className='w-5 h-5 text-yellow-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
-                                  <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' />
-                                </svg>
+                        {!isProcessingPayment
+                          ? (
+                            <>
+                              <div className='flex items-start gap-3 mb-4'>
+                                <div className='w-10 h-10 rounded-lg bg-yellow-400/20 border border-yellow-400/30 flex items-center justify-center flex-shrink-0'>
+                                  <svg className='w-5 h-5 text-yellow-400' fill='none' viewBox='0 0 24 24' stroke='currentColor'>
+                                    <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z' />
+                                  </svg>
+                                </div>
+                                <div className='flex-1'>
+                                  <h4 className='text-base font-semibold text-white mb-1'>Payment Request Detected</h4>
+                                  <p className='text-sm text-white/70'>HTTP 402 - Payment Required</p>
+                                </div>
                               </div>
-                              <div className='flex-1'>
-                                <h4 className='text-base font-semibold text-white mb-1'>Payment Request Detected</h4>
-                                <p className='text-sm text-white/70'>HTTP 402 - Payment Required</p>
-                              </div>
-                            </div>
 
-                            <div className='glass-card rounded-lg p-4 space-y-3 mb-4'>
-                              <div className='flex justify-between items-center gap-10'>
-                                <span className='text-sm text-white/70'>Endpoint</span>
-                                <span className='text-sm text-white font-mono text-right break-all'>{pendingPayment.endpoint}</span>
+                              <div className='glass-card rounded-lg p-4 space-y-3 mb-4'>
+                                <div className='flex justify-between items-center gap-10'>
+                                  <span className='text-sm text-white/70'>Endpoint</span>
+                                  <span className='text-sm text-white font-mono text-right break-all'>{pendingPayment.endpoint}</span>
+                                </div>
+                                <div className='h-px bg-white/10' />
+                                <div className='flex justify-between items-center'>
+                                  <span className='text-sm text-white/70'>Amount Required</span>
+                                  <span className='text-lg text-white font-semibold'>{pendingPayment.amount}</span>
+                                </div>
                               </div>
-                              <div className='h-px bg-white/10' />
-                              <div className='flex justify-between items-center'>
-                                <span className='text-sm text-white/70'>Amount Required</span>
-                                <span className='text-lg text-white font-semibold'>{pendingPayment.amount}</span>
-                              </div>
-                            </div>
 
-                            <div className='flex gap-3'>
-                              <SecondaryButton
-                                icon={false}
-                                className='w-full'
-                                onClick={handleRejectPayment}
-                              >
-                                Reject
-                              </SecondaryButton>
-                              <PrimaryButton
-                                icon={false}
-                                className='w-full'
-                                onClick={handleApprovePayment}
-                              >
-                                Approve & Pay
-                              </PrimaryButton>
-                            </div>
-                          </>
-                        ) : (
-                          <>
-                            <div className='flex items-start gap-3 mb-4'>
-                              <div className='w-10 h-10 rounded-lg bg-[#4A9FB8]/20 border border-[#4A9FB8]/30 flex items-center justify-center flex-shrink-0'>
-                                <Loader2 className='w-5 h-5 text-[#4A9FB8] animate-spin' />
+                              <div className='flex gap-3'>
+                                <SecondaryButton
+                                  icon={false}
+                                  className='w-full'
+                                  onClick={handleRejectPayment}
+                                >
+                                  Reject
+                                </SecondaryButton>
+                                <PrimaryButton
+                                  icon={false}
+                                  className='w-full'
+                                  onClick={handleApprovePayment}
+                                >
+                                  Approve & Pay
+                                </PrimaryButton>
                               </div>
-                              <div className='flex-1'>
-                                <h4 className='text-base font-semibold text-white mb-1'>Payment Processing</h4>
-                                <p className='text-sm text-white/70'>Signing transaction on Solana...</p>
+                            </>
+                            )
+                          : (
+                            <>
+                              <div className='flex items-start gap-3 mb-4'>
+                                <div className='w-10 h-10 rounded-lg bg-[#4A9FB8]/20 border border-[#4A9FB8]/30 flex items-center justify-center flex-shrink-0'>
+                                  <Loader2 className='w-5 h-5 text-[#4A9FB8] animate-spin' />
+                                </div>
+                                <div className='flex-1'>
+                                  <h4 className='text-base font-semibold text-white mb-1'>Payment Processing</h4>
+                                  <p className='text-sm text-white/70'>Signing transaction on Solana...</p>
+                                </div>
                               </div>
-                            </div>
 
-                            <div className='glass-card rounded-lg p-4 space-y-3 mb-4'>
-                              <div className='flex justify-between items-center gap-10'>
-                                <span className='text-sm text-white/70'>Endpoint</span>
-                                <span className='text-sm text-white font-mono text-right break-all'>{pendingPayment.endpoint}</span>
+                              <div className='glass-card rounded-lg p-4 space-y-3 mb-4'>
+                                <div className='flex justify-between items-center gap-10'>
+                                  <span className='text-sm text-white/70'>Endpoint</span>
+                                  <span className='text-sm text-white font-mono text-right break-all'>{pendingPayment.endpoint}</span>
+                                </div>
+                                <div className='h-px bg-white/10' />
+                                <div className='flex justify-between items-center'>
+                                  <span className='text-sm text-white/70'>Amount</span>
+                                  <span className='text-lg text-white font-semibold'>{pendingPayment.amount}</span>
+                                </div>
+                                <div className='h-px bg-white/10' />
+                                <div className='flex items-center gap-2'>
+                                  <Loader2 className='w-4 h-4 text-[#4A9FB8] animate-spin' />
+                                  <span className='text-sm text-white/70'>Broadcasting to protocol...</span>
+                                </div>
                               </div>
-                              <div className='h-px bg-white/10' />
-                              <div className='flex justify-between items-center'>
-                                <span className='text-sm text-white/70'>Amount</span>
-                                <span className='text-lg text-white font-semibold'>{pendingPayment.amount}</span>
-                              </div>
-                              <div className='h-px bg-white/10' />
-                              <div className='flex items-center gap-2'>
-                                <Loader2 className='w-4 h-4 text-[#4A9FB8] animate-spin' />
-                                <span className='text-sm text-white/70'>Broadcasting to protocol...</span>
-                              </div>
-                            </div>
-                          </>
-                        )}
+                            </>
+                            )}
                       </div>
                     </motion.div>
                   )}
@@ -512,17 +514,19 @@ export default function AppPage () {
                     <div className='flex justify-between items-center'>
                       <span className='text-sm text-white/70'>Status</span>
                       <div className='flex items-center gap-2'>
-                        {paymentDetails.status === 'completed' ? (
-                          <>
-                            <CheckCircle2 className='w-4 h-4 text-emerald-400' />
-                            <span className='text-sm text-emerald-400 font-medium'>Completed</span>
-                          </>
-                        ) : (
-                          <>
-                            <Loader2 className='w-4 h-4 text-yellow-400 animate-spin' />
-                            <span className='text-sm text-yellow-400 font-medium'>Pending</span>
-                          </>
-                        )}
+                        {paymentDetails.status === 'completed'
+                          ? (
+                            <>
+                              <CheckCircle2 className='w-4 h-4 text-emerald-400' />
+                              <span className='text-sm text-emerald-400 font-medium'>Completed</span>
+                            </>
+                            )
+                          : (
+                            <>
+                              <Loader2 className='w-4 h-4 text-yellow-400 animate-spin' />
+                              <span className='text-sm text-yellow-400 font-medium'>Pending</span>
+                            </>
+                            )}
                       </div>
                     </div>
                   </div>
@@ -548,7 +552,7 @@ export default function AppPage () {
                   <PrimaryButton
                     onClick={closeModal}
                     icon={false}
-                    className="w-full"
+                    className='w-full'
                   >
                     Close
                   </PrimaryButton>

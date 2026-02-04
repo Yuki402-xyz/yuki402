@@ -6,7 +6,7 @@ global.TextDecoder = require('util').TextDecoder
 
 // Mock Next.js router
 jest.mock('next/navigation', () => ({
-  useRouter() {
+  useRouter () {
     return {
       push: jest.fn(),
       replace: jest.fn(),
@@ -14,15 +14,15 @@ jest.mock('next/navigation', () => ({
       back: jest.fn(),
       pathname: '/',
       query: {},
-      asPath: '/',
+      asPath: '/'
     }
   },
-  usePathname() {
+  usePathname () {
     return '/'
   },
-  useSearchParams() {
+  useSearchParams () {
     return new URLSearchParams()
-  },
+  }
 }))
 
 // Mock framer-motion
@@ -37,14 +37,14 @@ jest.mock('framer-motion', () => ({
     button: ({ children, ...props }) => <button {...props}>{children}</button>,
     span: ({ children, ...props }) => <span {...props}>{children}</span>,
     ul: ({ children, ...props }) => <ul {...props}>{children}</ul>,
-    li: ({ children, ...props }) => <li {...props}>{children}</li>,
+    li: ({ children, ...props }) => <li {...props}>{children}</li>
   },
   AnimatePresence: ({ children }) => <>{children}</>,
   useAnimation: () => ({
     start: jest.fn(),
-    stop: jest.fn(),
+    stop: jest.fn()
   }),
-  useInView: () => true,
+  useInView: () => true
 }))
 
 // Mock Solana wallet adapter
@@ -58,21 +58,21 @@ jest.mock('@solana/wallet-adapter-react', () => ({
     connect: jest.fn(),
     disconnect: jest.fn(),
     select: jest.fn(),
-    sendTransaction: jest.fn(),
+    sendTransaction: jest.fn()
   }),
   useConnection: () => ({
     connection: {
       getBalance: jest.fn(),
-      getAccountInfo: jest.fn(),
-    },
+      getAccountInfo: jest.fn()
+    }
   }),
   WalletProvider: ({ children }) => <>{children}</>,
-  ConnectionProvider: ({ children }) => <>{children}</>,
+  ConnectionProvider: ({ children }) => <>{children}</>
 }))
 
 jest.mock('@solana/wallet-adapter-react-ui', () => ({
   WalletModalProvider: ({ children }) => <>{children}</>,
-  WalletMultiButton: () => <button>Connect Wallet</button>,
+  WalletMultiButton: () => <button>Connect Wallet</button>
 }))
 
 // Mock environment variables

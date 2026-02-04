@@ -6,20 +6,20 @@ jest.mock('@solana/wallet-adapter-wallets', () => ({
   PhantomWalletAdapter: jest.fn().mockImplementation(() => ({
     name: 'Phantom',
     url: 'https://phantom.app',
-    icon: 'phantom-icon',
-  })),
+    icon: 'phantom-icon'
+  }))
 }))
 
 jest.mock('@solana/web3.js', () => ({
   ...jest.requireActual('@solana/web3.js'),
-  clusterApiUrl: jest.fn(() => 'https://api.mainnet-beta.solana.com'),
+  clusterApiUrl: jest.fn(() => 'https://api.mainnet-beta.solana.com')
 }))
 
 describe('WalletContextProvider', () => {
   it('renders children correctly', () => {
     render(
       <WalletContextProvider>
-        <div data-testid="child-element">Test Child</div>
+        <div data-testid='child-element'>Test Child</div>
       </WalletContextProvider>
     )
 
@@ -40,8 +40,8 @@ describe('WalletContextProvider', () => {
   it('renders multiple children', () => {
     render(
       <WalletContextProvider>
-        <div data-testid="child-1">Child 1</div>
-        <div data-testid="child-2">Child 2</div>
+        <div data-testid='child-1'>Child 1</div>
+        <div data-testid='child-2'>Child 2</div>
       </WalletContextProvider>
     )
 

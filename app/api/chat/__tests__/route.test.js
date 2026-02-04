@@ -1,15 +1,15 @@
 // Mock the AI SDK and OpenRouter provider before importing
-jest.mock('@openrouter/ai-sdk-provider', () => ({
-  createOpenRouter: jest.fn(() => jest.fn()),
-}))
-
-jest.mock('ai', () => ({
-  streamText: jest.fn(),
-}))
-
 import { createOpenRouter } from '@openrouter/ai-sdk-provider'
 import { streamText } from 'ai'
 import { POST, maxDuration } from '../route'
+
+jest.mock('@openrouter/ai-sdk-provider', () => ({
+  createOpenRouter: jest.fn(() => jest.fn())
+}))
+
+jest.mock('ai', () => ({
+  streamText: jest.fn()
+}))
 
 describe('Chat API Route', () => {
   let mockToUIMessageStreamResponse
@@ -24,11 +24,11 @@ describe('Chat API Route', () => {
     // Mock the response
     mockToUIMessageStreamResponse = jest.fn(() => ({
       status: 200,
-      body: 'mock-stream',
+      body: 'mock-stream'
     }))
 
     streamText.mockReturnValue({
-      toUIMessageStreamResponse: mockToUIMessageStreamResponse,
+      toUIMessageStreamResponse: mockToUIMessageStreamResponse
     })
 
     createOpenRouter.mockReturnValue(jest.fn())
@@ -52,10 +52,10 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'user',
-              content: 'Hello, Yuki!',
-            },
-          ],
-        }),
+              content: 'Hello, Yuki!'
+            }
+          ]
+        })
       }
 
       const response = await POST(mockRequest)
@@ -67,17 +67,17 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'user',
-              content: 'Hello, Yuki!',
-            },
+              content: 'Hello, Yuki!'
+            }
           ],
           temperature: 0.7,
-          maxTokens: 6000,
+          maxTokens: 6000
         })
       )
       expect(mockToUIMessageStreamResponse).toHaveBeenCalled()
       expect(response).toEqual({
         status: 200,
-        body: 'mock-stream',
+        body: 'mock-stream'
       })
     })
 
@@ -87,10 +87,10 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'user',
-              parts: [{ text: 'Message with parts' }],
-            },
-          ],
-        }),
+              parts: [{ text: 'Message with parts' }]
+            }
+          ]
+        })
       }
 
       await POST(mockRequest)
@@ -100,9 +100,9 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'user',
-              content: 'Message with parts',
-            },
-          ],
+              content: 'Message with parts'
+            }
+          ]
         })
       )
     })
@@ -113,10 +113,10 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'assistant',
-              content: 'Direct content message',
-            },
-          ],
-        }),
+              content: 'Direct content message'
+            }
+          ]
+        })
       }
 
       await POST(mockRequest)
@@ -126,9 +126,9 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'assistant',
-              content: 'Direct content message',
-            },
-          ],
+              content: 'Direct content message'
+            }
+          ]
         })
       )
     })
@@ -138,10 +138,10 @@ describe('Chat API Route', () => {
         json: jest.fn().mockResolvedValue({
           messages: [
             {
-              role: 'user',
-            },
-          ],
-        }),
+              role: 'user'
+            }
+          ]
+        })
       }
 
       await POST(mockRequest)
@@ -151,9 +151,9 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'user',
-              content: '',
-            },
-          ],
+              content: ''
+            }
+          ]
         })
       )
     })
@@ -164,18 +164,18 @@ describe('Chat API Route', () => {
           messages: [
             {
               role: 'user',
-              content: 'First message',
+              content: 'First message'
             },
             {
               role: 'assistant',
-              content: 'Response',
+              content: 'Response'
             },
             {
               role: 'user',
-              content: 'Second message',
-            },
-          ],
-        }),
+              content: 'Second message'
+            }
+          ]
+        })
       }
 
       await POST(mockRequest)
@@ -185,8 +185,8 @@ describe('Chat API Route', () => {
           messages: [
             { role: 'user', content: 'First message' },
             { role: 'assistant', content: 'Response' },
-            { role: 'user', content: 'Second message' },
-          ],
+            { role: 'user', content: 'Second message' }
+          ]
         })
       )
     })
@@ -194,8 +194,8 @@ describe('Chat API Route', () => {
     it('should call streamText with correct parameters', async () => {
       const mockRequest = {
         json: jest.fn().mockResolvedValue({
-          messages: [{ role: 'user', content: 'Test message' }],
-        }),
+          messages: [{ role: 'user', content: 'Test message' }]
+        })
       }
 
       await POST(mockRequest)
@@ -204,7 +204,7 @@ describe('Chat API Route', () => {
         expect.objectContaining({
           temperature: 0.7,
           maxTokens: 6000,
-          system: 'You are Yuki, a helpful AI assistant.',
+          system: 'You are Yuki, a helpful AI assistant.'
         })
       )
     })
