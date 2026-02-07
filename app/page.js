@@ -93,17 +93,17 @@ export default function Home () {
       {/* Hero Section */}
       <main className='relative z-10 px-6'>
         <div className='max-w-7xl mx-auto'>
-          <div className='grid grid-cols-1 lg:grid-cols-2 mt-[14rem] min-h-[calc(900px-14rem)]'>
+          <div className='grid grid-cols-1 lg:grid-cols-2 mt-[10rem] min-h-[calc(900px-10rem)]'>
             {/* Right: Text Content */}
             <div className='space-y-8 order-2 lg:order-2'>
-              {/* <motion.div
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.1, duration: 0.5 }}
                 className='inline-flex items-center gap-2 px-3 py-1 rounded-full glass-panel text-sm text-white'
               >
-                <span>✨ $YUKI Token live on Solana! <Link className='underline opacity-90 hover:text-sky-200' href="/#tokenomics">Learn more</Link></span>
-              </motion.div> */}
+                <span>✨ $YUKI now live on Solana! <Link className='underline opacity-90 hover:text-sky-200' href="/#tokenomics">Learn more</Link></span>
+              </motion.div>
 
               <h1 className='text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-semibold text-white tracking-tight leading-[1.1] font-heading'>
                 <motion.span
@@ -388,7 +388,7 @@ export default function Home () {
                     loop
                     muted
                     playsInline
-                    className='w-4/5 h-auto mx-auto'
+                    className='w-4/5 h-auto mx-auto rounded-xl'
                   >
                     <source src='/demo.mp4' type='video/mp4' />
                     Your browser does not support the video tag.
@@ -443,7 +443,7 @@ export default function Home () {
                   </div>
                 </div>
                 <PrimaryButton
-                  href='https://pump.fun/coin/'
+                  href='https://pump.fun/coin/DPsJ4tWY7j7TeMhvUYv3e2DchA6jm81TsEVrHgkbpump'
                   className='w-fit'
                 >
                   Buy $YUKI on Pump.fun
